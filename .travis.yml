@@ -2,8 +2,6 @@
 
 dist: xenial
 language: python
-Service:
-  - docker
 addons:
   apt:
     packages:
@@ -34,12 +32,11 @@ jobs:
       arch: arm64
       env: TOX_ENV=py37-full
     - python: '3.8'
-      env:
-        - TOX_ENV=py38-full
-        - BUILD_WHEEL=1
-        - CIBW_SKIP=cp27-manylinux_x86_64
+      service: docker
+      env: TOX_ENV=py38-full BUILD_WHEEL=1 CIBW_SKIP=cp27-manylinux_x86_64 CIBW_SKIP=cp27-manylinux_i686
     - python: '3.8'
       arch: arm64
+      service: docker
       env: TOX_ENV=py38-full BUILD_WHEEL=1
     - python: pypy3.5-5.10.1
       # Pypy is a lot slower due to jit warmup costs, so don't run the "full"
