@@ -67,6 +67,20 @@ install:
          cibuildwheel --output-dir dist/
          auditwheel repair dist/*.whl -w dist/
          ls dist/
+         ls dist/
+         ls dist/
+         ls dist/
+         ls dist/
+         ls dist/
+         ls dist/
+         ls dist/
+         ls dist/
+         ls dist/
+         ls dist/
+         ls dist/
+         ls dist/
+         ls dist/
+         
       fi
 
 script:
