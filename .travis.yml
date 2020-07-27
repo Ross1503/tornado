@@ -20,24 +20,27 @@ jobs:
       # Twisted doesn't install on python 3.5.2, so don't run the "full" tests.
       env: TOX_ENV=py35
     - python: '3.5'
-      env: TOX_ENV=py35-full
+      env: TOX_ENV=py35-full CIBW_BUILD=cp35-manylinux_x86_64 CIBW_TEST_COMMAND: tox
+    - python: '3.5'
+      arch: arm64
+      env: TOX_ENV=py35-full CIBW_BUILD=cp35-manylinux_aarch64
     - python: '3.6'
-      env: TOX_ENV=py36-full
+      env: TOX_ENV=py36-full CIBW_BUILD=cp36-manylinux_x86_64
     - python: '3.6'
       arch: arm64
-      env: TOX_ENV=py36-full
+      env: TOX_ENV=py36-full CIBW_BUILD=cp36-manylinux_aarch64
     - python: '3.7'
-      env: TOX_ENV=py37-full
+      env: TOX_ENV=py37-full CIBW_BUILD=cp37-manylinux_x86_64
     - python: '3.7'
       arch: arm64
-      env: TOX_ENV=py37-full
+      env: TOX_ENV=py37-full CIBW_BUILD=cp37-manylinux_aarch64
     - python: '3.8'
       service: docker
-      env: TOX_ENV=py38-full BUILD_WHEEL=1 CIBW_SKIP="pp* cp27-* cp35-*"
+      env: TOX_ENV=py38-full CIBW_BUILD=cp38-manylinux_x86_64
     - python: '3.8'
       arch: arm64
       service: docker
-      env: TOX_ENV=py38-full BUILD_WHEEL=1
+      env: TOX_ENV=py38-full CIBW_BUILD=cp38-manylinux_aarch64
     - python: pypy3.5-5.10.1
       # Pypy is a lot slower due to jit warmup costs, so don't run the "full"
       # test config there.
@@ -58,11 +61,9 @@ jobs:
 
 install:
     - |
-      if [[ -n ${BUILD_WHEEL} ]]; then
-         pip install -U cibuildwheel
-         cibuildwheel --output-dir dist/
-         ls dist/
-      fi
+      pip install -U cibuildwheel
+      cibuildwheel --output-dir dist/
+      ls dist/
     - travis_retry pip install tox
     - python -VV
     - curl-config --version; pip freeze
