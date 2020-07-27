@@ -33,7 +33,7 @@ jobs:
       env: TOX_ENV=py37-full
     - python: '3.8'
       service: docker
-      env: TOX_ENV=py38-full BUILD_WHEEL=1 CIBW_SKIP="pp* cp27-*"
+      env: TOX_ENV=py38-full BUILD_WHEEL=1 CIBW_SKIP="pp* cp27-* cp35-*"
     - python: '3.8'
       arch: arm64
       service: docker
