@@ -28,7 +28,7 @@ jobs:
       env: TOX_ENV=py36-full BUILD_WHEEL=1 CIBW_BUILD=cp36-manylinux_x86_64
     - python: '3.6'
       arch: arm64
-      env: TOX_ENV=py36-full BUILD_WHEEL=1 CIBW_BUILD=cp36-manylinux_aarch64 CIBW_TEST_COMMAND=pytest
+      env: TOX_ENV=py36-full BUILD_WHEEL=1 CIBW_BUILD=cp36-manylinux_aarch64 CIBW_BEFORE_TEST=pip install -U tox CIBW_TEST_COMMAND=tox tornado/tox.ini
     - python: '3.7'
       env: TOX_ENV=py37-full BUILD_WHEEL=1 CIBW_BUILD=cp37-manylinux_x86_64
     - python: '3.7'
