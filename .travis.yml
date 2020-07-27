@@ -28,7 +28,7 @@ jobs:
       env: TOX_ENV=py36-full CIBW_BUILD=cp36-manylinux_x86_64
     - python: '3.6'
       arch: arm64
-      env: TOX_ENV=py36-full CIBW_BUILD=cp36-manylinux_aarch64
+      env: TOX_ENV=py36-full CIBW_BUILD=cp36-manylinux_aarch64 CIBW_TEST_COMMAND=tox
     - python: '3.7'
       env: TOX_ENV=py37-full CIBW_BUILD=cp37-manylinux_x86_64
     - python: '3.7'
