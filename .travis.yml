@@ -68,6 +68,10 @@ jobs:
 install:
     - |
       if [[ -n ${BUILD_WHEEL} ]]; then
+         pwd
+         pwd
+         ls
+         ls
          pip install -U cibuildwheel
          cibuildwheel --output-dir dist/
          ls dist/
