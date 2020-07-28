@@ -73,11 +73,11 @@ install:
          ls
          ls
          pip install -U cibuildwheel
-         cibuildwheel --output-dir dist/
+         cibuildwheel --output-dir wheelhouse
          pwd
          pwd
          pwd
-         ls dist/
+         ls wheelhouse
       fi
     - travis_retry pip install tox
     - python -VV
