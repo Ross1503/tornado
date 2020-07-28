@@ -34,7 +34,7 @@ jobs:
       env: TOX_ENV=py36-full BUILD_WHEEL=1 CIBW_BUILD=cp36-manylinux_aarch64
     - python: '3.7'
       services: docker
-      env: TOX_ENV=py37-full BUILD_WHEEL=1 CIBW_BUILD=cp37-manylinux_x86_64 CIBW_TEST_REQUIRES="tox && yum install -y libcurl-devel openssl-devel" CIBW_TEST_COMMAND="cd {project} && tox -e py37-full"
+      env: TOX_ENV=py37-full BUILD_WHEEL=1 CIBW_BUILD=cp37-manylinux_x86_64 CIBW_TEST_REQUIRES="tox" CIBW_TEST_REQUIRES="yum install libcurl-devel openssl-devel" CIBW_TEST_COMMAND="cd {project} && tox -e py37-full"
     - python: '3.7'
       arch: arm64
       services: docker
