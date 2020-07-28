@@ -25,7 +25,7 @@ jobs:
     - python: '3.5'
       arch: arm64
       services: docker
-      env: TOX_ENV=py35-full BUILD_WHEEL=1 CIBW_BUILD=cp35-manylinux_aarch64 CIBW_BEFORE_TEST="pip install -U tox" CIBW_TEST_COMMAND=tox setup.cfg"
+      env: TOX_ENV=py35-full BUILD_WHEEL=1 CIBW_BUILD=cp35-manylinux_aarch64 CIBW_BEFORE_TEST="pip install -U tox" CIBW_TEST_COMMAND=tox /home/travis/build/Ross1503/tornado/tox.ini"
     - python: '3.6'
       services: docker
       env: TOX_ENV=py36-full BUILD_WHEEL=1 CIBW_BUILD=cp36-manylinux_x86_64
