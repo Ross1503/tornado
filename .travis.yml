@@ -79,8 +79,3 @@ install:
          pwd
          ls wheelhouse
       fi
-    - travis_retry pip install tox
-    - python -VV
-    - curl-config --version; pip freeze
-script:
-    - "tox -e $TOX_ENV -- $TOX_ARGS"
