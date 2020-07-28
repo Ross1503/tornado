@@ -25,7 +25,7 @@ jobs:
     - python: '3.5'
       arch: arm64
       services: docker
-      env: TOX_ENV=py35-full CC="gcc" BUILD_WHEEL=1 CIBW_BUILD=cp35-manylinux_aarch64 CIBW_BEFORE_TEST="pip install -U tox" CIBW_TEST_COMMAND="PYTHON -m unittest discover -v -f -s {project}/tests"
+      env: TOX_ENV=py35-full CC="gcc" BUILD_WHEEL=1 CIBW_BUILD=cp35-manylinux_aarch64 CIBW_BEFORE_TEST="pip install -U pytest" CIBW_TEST_COMMAND="pytest {project}/tests"
     - python: '3.6'
       services: docker
       env: TOX_ENV=py36-full BUILD_WHEEL=1 CIBW_BUILD=cp36-manylinux_x86_64
