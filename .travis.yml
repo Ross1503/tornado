@@ -78,4 +78,5 @@ install:
          cibuildwheel --output-dir wheelhouse
          ls wheelhouse
       fi
-
+script:
+  - tox -e $TOX_ENV -- $TOX_ARGS
