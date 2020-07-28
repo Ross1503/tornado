@@ -74,6 +74,9 @@ install:
          ls
          pip install -U cibuildwheel
          cibuildwheel --output-dir dist/
+         pwd
+         pwd
+         pwd
          ls dist/
       fi
     - travis_retry pip install tox
