@@ -8,6 +8,12 @@ addons:
       - libgnutls-dev
       - patchelf
 
+globle:
+  env:
+    - PYCURL_SSL_LIBRARY=nss
+    - CIBW_TEST_REQUIRES="tox && yum install -y libcurl-devel openssl-devel && pip install pycurl --global-option="--with-nss"
+    - CIBW_TEST_COMMAND="cd {project} && tox -e $TOX_ENV -- $TOX_ARGS"
+    
 # For a list of available versions,run
 #     aws s3 ls s3://travis-python-archives/binaries/ubuntu/16.04/x86_64/
 jobs:
@@ -25,28 +31,28 @@ jobs:
     - python: '3.5'
       arch: arm64
       services: docker
-      env: TOX_ENV=py35-full BUILD_WHEEL=1 PIP_NO_CACHE_DIR=off PYCURL_SSL_LIBRARY=nss CIBW_BUILD=cp35-manylinux_aarch64 CIBW_TEST_REQUIRES="tox && yum install -y libcurl-devel && pip install --compile --install-option='--with-nss' --no-cache-dir pycurl" CIBW_TEST_COMMAND="cd {project} && tox -e py35-full"
+      env: TOX_ENV=py35-full BUILD_WHEEL=1 CIBW_BUILD=cp35-manylinux_aarch64
     - python: '3.6'
       services: docker
       env: TOX_ENV=py36-full BUILD_WHEEL=1 CIBW_BUILD=cp36-manylinux_x86_64
     - python: '3.6'
       arch: arm64
       services: docker
-      env: TOX_ENV=py36-full BUILD_WHEEL=1 CIBW_BUILD=cp36-manylinux_aarch64 CIBW_TEST_REQUIRES="tox && yum install -y libcurl-devel" CIBW_TEST_COMMAND="cd {project} && tox -e py35-full"
+      env: TOX_ENV=py36-full BUILD_WHEEL=1 CIBW_BUILD=cp36-manylinux_aarch64 
     - python: '3.7'
       services: docker
       env: TOX_ENV=py37-full BUILD_WHEEL=1 CIBW_BUILD=cp37-manylinux_x86_64
     - python: '3.7'
       arch: arm64
       services: docker
-      env: TOX_ENV=py37-full BUILD_WHEEL=1 CIBW_BUILD=cp37-manylinux_aarch64 CIBW_TEST_REQUIRES="tox && yum install -y libcurl-devel" CIBW_TEST_COMMAND="cd {project} && tox -e py35-full"
+      env: TOX_ENV=py37-full BUILD_WHEEL=1 CIBW_BUILD=cp37-manylinux_aarch64
     - python: '3.8'
       services: docker
       env: TOX_ENV=py38-full BUILD_WHEEL=1 CIBW_BUILD=cp38-manylinux_x86_64
     - python: '3.8'
       arch: arm64
       services: docker
-      env: TOX_ENV=py38-full BUILD_WHEEL=1 CIBW_BUILD=cp38-manylinux_aarch64 CIBW_TEST_REQUIRES="tox && yum install -y libcurl-devel" CIBW_TEST_COMMAND="cd {project} && tox -e py35-full"
+      env: TOX_ENV=py38-full BUILD_WHEEL=1 CIBW_BUILD=cp38-manylinux_aarch64
     - python: pypy3.5-5.10.1
       # Pypy is a lot slower due to jit warmup costs, so don't run the "full"
       # test config there.
@@ -68,19 +74,8 @@ jobs:
 install:
     - |
       if [[ -n ${BUILD_WHEEL} ]]; then
-         pwd
-         pwd
-         ls
-         ls
          pip install -U cibuildwheel
          cibuildwheel --output-dir wheelhouse
-         pwd
-         pwd
-         pwd
          ls wheelhouse
       fi
-    - travis_retry pip install tox
-    - python -VV
-    - curl-config --version; pip freeze
-script:
-    - "tox -e $TOX_ENV -- $TOX_ARGS"
+
