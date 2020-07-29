@@ -70,8 +70,7 @@ install:
       if [[ -n ${BUILD_WHEEL} ]]; then
          pip install -U cibuildwheel
          cibuildwheel --output-dir wheelhouse
-         ls wheelhouse
-         rm wheelhouse/*manylinux2010_x86_64.whl
+         rm -rf wheelhouse/*manylinux2010_x86_64.whl
          pip install wheelhouse/*.whl
       fi
     - travis_retry pip install tox
