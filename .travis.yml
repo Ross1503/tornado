@@ -71,8 +71,8 @@ install:
          pip install -U cibuildwheel
          cibuildwheel --output-dir wheelhouse
          ls wheelhouse
+         pip install wheelhouse/*.whl
       fi
-    - pip install wheelhouse/*.whl
     - travis_retry pip install tox
     - python -VV
     - curl-config --version; pip freeze
