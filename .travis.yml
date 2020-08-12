@@ -38,7 +38,7 @@ jobs:
     - python: '3.7'
       arch: arm64
       services: docker
-      env: TOX_ENV=py37-full BUILD_WHEEL=1 PIP_NO_CACHE_DIR=off CPPFLAGS=-I/usr/local/opt/openssl/include LDFLAGS=-L/usr/local/opt/openssl/lib CIBW_BUILD=cp37-manylinux_aarch64 CIBW_BEFORE_ALL_LINUX="yum install -y libcurl-devel openssl-devel" CIBW_BEFORE_BUILD="pip install pycurl --global-option=--with-openssl" CIBW_TEST_REQUIRES="tox" CIBW_TEST_COMMAND="cd {project} && tox -e py37-full"
+      env: TOX_ENV=py37-full BUILD_WHEEL=1 PIP_NO_CACHE_DIR=off export PYCURL_SSL_LIBRARY=nss CIBW_BUILD=cp37-manylinux_aarch64 CIBW_BEFORE_ALL_LINUX="yum install -y libcurl-devel openssl-devel" CIBW_BEFORE_BUILD="pip install pycurl --global-option=--with-nss" CIBW_TEST_REQUIRES="tox" CIBW_TEST_COMMAND="cd {project} && tox -e py37-full"
     - python: '3.8'
       services: docker
       env: TOX_ENV=py38-full
