@@ -20,11 +20,11 @@ jobs:
       env: TOX_ENV=py35 
     - python: '3.5'
       services: docker
-      env: TOX_ENV=py35-full BUILD_WHEEL=1 CIBW_BUILD=cp35-manylinux_x86_64 CIBW_ENVIRONMENT="PYCURL_SSL_LIBRARY=nss" CIBW_BEFORE_ALL="yum install -y libcurl-devel openssl-devel" CIBW_BEFORE_BUILD="pip install --compile --install-option=--with-nss --no-cache-dir pycurl" CIBW_TEST_REQUIRES="tox" CIBW_TEST_COMMAND="cd {project} && tox -e $TOX_ENV"
+      env: TOX_ENV=py35-full BUILD_WHEEL=1 CIBW_BUILD=cp35-manylinux_x86_64 CIBW_ENVIRONMENT="PYCURL_SSL_LIBRARY=nss" CIBW_BEFORE_ALL="yum install -y libcurl-devel && openssl-devel" CIBW_BEFORE_BUILD="pip install --compile --install-option=--with-nss --no-cache-dir pycurl" CIBW_TEST_REQUIRES="tox" CIBW_TEST_COMMAND="cd {project} && tox -e $TOX_ENV"
     - python: '3.5'
       arch: arm64
       services: docker
-      env: TOX_ENV=py35-full BUILD_WHEEL=1 CIBW_BUILD=cp35-manylinux_aarch64 CIBW_ENVIRONMENT="PYCURL_SSL_LIBRARY=nss" CIBW_BEFORE_ALL="yum install -y libcurl-devel openssl-devel" CIBW_BEFORE_BUILD="pip install --compile --install-option=--with-nss --no-cache-dir pycurl" CIBW_TEST_REQUIRES="tox" CIBW_TEST_COMMAND="cd {project} && tox -e $TOX_ENV"
+      env: TOX_ENV=py35-full BUILD_WHEEL=1 CIBW_BUILD=cp35-manylinux_aarch64 CIBW_ENVIRONMENT="PYCURL_SSL_LIBRARY=nss" CIBW_BEFORE_ALL="yum install -y libcurl-devel && openssl-devel" CIBW_BEFORE_BUILD="pip install --compile --install-option=--with-nss --no-cache-dir pycurl" CIBW_TEST_REQUIRES="tox" CIBW_TEST_COMMAND="cd {project} && tox -e $TOX_ENV"
     - python: '3.6'
       services: docker
       env: TOX_ENV=py36-full BUILD_WHEEL=1 CIBW_BUILD=cp36-manylinux_x86_64 CIBW_ENVIRONMENT="PYCURL_SSL_LIBRARY=nss" CIBW_BEFORE_ALL="yum install -y libcurl-devel openssl-devel" CIBW_BEFORE_BUILD="pip install --compile --install-option=--with-nss --no-cache-dir pycurl" CIBW_TEST_REQUIRES="tox" CIBW_TEST_COMMAND="cd {project} && tox -e $TOX_ENV"
