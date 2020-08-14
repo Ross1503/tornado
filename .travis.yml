@@ -80,6 +80,6 @@ install:
 
 script:
     - |
-      if [[ "BUILD_WHEEL != 1 ]]; then
+      if $BUILD_WHEEL != 1; then
          tox -e $TOX_ENV -- $TOX_ARGS
       fi
