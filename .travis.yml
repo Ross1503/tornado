@@ -75,4 +75,7 @@ install:
     - curl-config --version; pip freeze
 
 script:
-    - "tox -e $TOX_ENV -- $TOX_ARGS"
+    - |
+      if [[ -n !${BUILD_WHEEL} ]]; then
+         tox -e $TOX_ENV -- $TOX_ARGS
+      fi
