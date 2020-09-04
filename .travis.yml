@@ -69,12 +69,6 @@ jobs:
     - python: nightly
 
 install:
-    - |
-      if [[ -n ${BUILD_WHEEL} ]]; then
-         export CIBW_TEST_COMMAND="cd {project} && tox -e $TOX_ENV"
-         pip install -U cibuildwheel
-         cibuildwheel --output-dir wheelhouse
-      fi
     - travis_retry pip install tox
     - python -VV
     - curl-config --version; pip freeze
