@@ -9,7 +9,7 @@ addons:
 env:
   global:
     - CIBW_ENVIRONMENT="PYCURL_SSL_LIBRARY=nss"
-    - CIBW_BEFORE_TEST="yum install -y libcurl-devel"
+    - CIBW_BEFORE_BUILD="yum install -y libcurl-devel openssl-devel"
     - CIBW_TEST_REQUIRES="tox"
 # For a list of available versions,run
 #     aws s3 ls s3://travis-python-archives/binaries/ubuntu/16.04/x86_64/
