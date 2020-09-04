@@ -81,6 +81,10 @@ install:
 
 script:
     - |
-      if [[ -z ${BUILD_WHEEL} ]]; then
+      if [[ -n ${BUILD_WHEEL} ]]; then
+         export CIBW_TEST_COMMAND="cd {project} && tox -e $TOX_ENV"
+         pip install -U cibuildwheel
+         cibuildwheel --output-dir wheelhouse
+      else
          tox -e $TOX_ENV -- $TOX_ARGS
       fi
