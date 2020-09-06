@@ -77,7 +77,7 @@ script:
     - |
       if [[ -n ${BUILD_WHEEL} ]]; then
          echo ${project}
-         export CIBW_TEST_COMMAND="python {project}/runtest.sh"
+         export CIBW_TEST_COMMAND="python {project}/tornado/test"
          pip install -U cibuildwheel
          cibuildwheel --output-dir wheelhouse
          ls wheelhouse/
