@@ -20,7 +20,7 @@ jobs:
       env: TOX_ENV=py35 
     - python: '3.5'
       services: docker
-      env: TOX_ENV=py35-full BUILD_WHEEL=1 CIBW_BUILD=cp35-manylinux_x86_64 CIBW_SKIP=cp35-manylinux2010
+      env: TOX_ENV=py35-full BUILD_WHEEL=1 CIBW_BUILD=cp35-manylinux1_x86_64
     - python: '3.5'
       arch: arm64
       services: docker
