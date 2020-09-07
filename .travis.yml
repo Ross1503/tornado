@@ -80,7 +80,7 @@ script:
          #export CIBW_TEST_COMMAND="cd {package} && ls && pwd && tox --installpkg /tmp/cibuildwheel/repaired_wheel/*.whl"
          pip install -U cibuildwheel
          cibuildwheel --output-dir wheelhouse
-         tox --installpkg wheelhouse/*.whl
+         tox --installpkg wheelhouse/*.whl -e $TOX_ENV -- $TOX_ARGS
          ls wheelhouse/
          ls wheelhouse/
       else
