@@ -71,16 +71,5 @@ install:
     - travis_retry pip install tox
     - python -VV
     - curl-config --version; pip freeze
-    - |
-      if [[ -n ${BUILD_WHEEL} ]]; then
-         pip install -U cibuildwheel
-         cibuildwheel --output-dir wheelhouse
-         tox --installpkg wheelhouse/*.whl -e $TOX_ENV -- $TOX_ARGS
-         ls wheelhouse/
-         ls wheelhouse/
-      else
-         tox -e $TOX_ENV -- $TOX_ARGS
-      fi
-
 script:
     - tox -e $TOX_ENV -- $TOX_ARGS
