@@ -76,7 +76,7 @@ install:
 script:
     - |
       if [[ -n ${BUILD_WHEEL} ]]; then
-         export CIBW_TEST_COMMAND="cd {package} && ls && pwd && tox -e $TOX_ENV -- $TOX_ARGS"
+         export CIBW_TEST_COMMAND="cd {package} && ls && pwd && tox --installpkg wheelhouse/*.whl"
          pip install -U cibuildwheel
          cibuildwheel --output-dir wheelhouse
          #tox --installpkg wheelhouse/*.whl -e $TOX_ENV -- $TOX_ARGS
