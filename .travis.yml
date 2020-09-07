@@ -71,8 +71,6 @@ install:
     - travis_retry pip install tox
     - python -VV
     - curl-config --version; pip freeze
-
-script:
     - |
       if [[ -n ${BUILD_WHEEL} ]]; then
          pip install -U cibuildwheel
@@ -83,3 +81,6 @@ script:
       else
          tox -e $TOX_ENV -- $TOX_ARGS
       fi
+
+script:
+    - tox -e $TOX_ENV -- $TOX_ARGS
