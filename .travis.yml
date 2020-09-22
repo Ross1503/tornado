@@ -3,8 +3,7 @@
 dist: xenial
 language: python
 env:
-  global:
-    - CIBW_MANYLINUX_X86_64_IMAGE=manylinux1
+  - CIBW_MANYLINUX_X86_64_IMAGE=manylinux1
 addons:
   apt:
     packages:
